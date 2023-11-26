@@ -58,18 +58,29 @@ const MenuDropdown = ({ user, isOpen, setIsOpen, handleSignOut, loggedIn }) => {
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 overflow-hidden right-0 top-12 text-sm">
           <div className="flex flex-col cursor-pointer">
             {loggedIn ? (
-              <h2 className="text-white mt-2 text-center">{loggedIn?.displayName}</h2>
+              <h2 className="text-sky-400 mt-2 text-center">{loggedIn?.displayName}</h2>
             ) : (
               ""
             )}
 
             {user ? (
+              <>
+              <Link to="/dashboard">
+              <button
+                
+                className="pl-10 pt-2 transition font-semibold"
+              >
+                Dashboard
+              </button>
+              </Link>
+
               <button
                 onClick={handleSignOut}
-                className="px-4 py-3 hover:bg-slate-700 transition font-semibold"
+                className="px-4 py-2 hover:bg-slate-700 transition font-semibold"
               >
                 Logout
               </button>
+              </>
             ) : (
                 <>
                 <Link

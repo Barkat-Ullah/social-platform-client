@@ -77,21 +77,6 @@ const Navbar = () => {
           </div>
         </NavLink>
       </li>
-
-      {/* {user?.email ? (
-        <>
-          <li className="">
-            <NavLink
-              to="/membership"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-slate-800 " : ""
-              }
-            ></NavLink>
-          </li>
-        </>
-      ) : (
-        ""
-      )} */}
     </>
   );
 
@@ -145,30 +130,6 @@ const Navbar = () => {
             handleSignOut={handleSignOut}
             loggedIn={loggedIn}
           ></MenuDropdown>
-
-          {/* {loggedIn && (
-            <div className=" mr-6 ">
-              <img className="w-12 rounded-full " src={loggedIn?.photoURL} />
-              <h2 className="text-pink">{loggedIn?.displayName}</h2>
-            </div>
-          )}
-
-            
-          {user ? (
-            <button
-              onClick={handleSignOut}
-              className="btn bg-gradient-to-r from-sky-400 to-blue-500 hover:from-blue-500 hover:to-sky-500 transition delay-150, duration-700, ease-in-out text-white"
-            >
-              Logout
-            </button>
-          ) : (
-            <Link
-              to="/login"
-              className="btn bg-gradient-to-r from-sky-400 to-blue-500 hover:from-blue-500 hover:to-sky-500 transition delay-150, duration-700, ease-in-out text-white"
-            >
-              Login
-            </Link>
-          )} */}
         </div>
       </nav>
     </div>
