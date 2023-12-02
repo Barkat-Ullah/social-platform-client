@@ -7,7 +7,7 @@ const ShareButton = ({ post }) => {
   const { _id, postName } = post;
 
   console.log(post);
-  const shareUrl = `http://localhost:5000/post/${_id}`;
+  const shareUrl = `https://online-meet-platform-server.vercel.app/post/${_id}`;
   return (
     <div>
       <FacebookShareButton url={shareUrl} quote={postName}>

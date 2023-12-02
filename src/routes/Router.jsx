@@ -41,7 +41,7 @@ const router = createBrowserRouter([
             {
                 path:"post/:id",
                 element:<PrivateRoute><PostDetails></PostDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/posts/${params.id}`)
+                loader: ({ params }) => fetch(`https://online-meet-platform-server.vercel.app/posts/${params.id}`)
 
             },
             {
