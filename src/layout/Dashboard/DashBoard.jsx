@@ -1,10 +1,11 @@
 import { FaAd, FaBook, FaHome, FaPodcast, FaUsers, FaVoicemail } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
 
 
 const DashBoard = () => {
 
-    const isAdmin = false;
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="flex max-w-6xl mx-auto my-1">
@@ -25,12 +26,7 @@ const DashBoard = () => {
                     Add Announcement
                   </NavLink>
                 </li>
-                {/* <li>
-                  <NavLink to="/dashboard/manageItems">
-                    <FaList></FaList>
-                    Manage Items
-                  </NavLink>
-                </li> */}
+   
                 <li>
                   <NavLink to="/dashboard/report">
                     <FaBook></FaBook>
@@ -40,7 +36,7 @@ const DashBoard = () => {
                 <li>
                   <NavLink to="/dashboard/users">
                     <FaUsers></FaUsers>
-                    All Users
+                    Manage Users
                   </NavLink>
                 </li>
               </>
@@ -52,12 +48,7 @@ const DashBoard = () => {
                     My Profile
                   </NavLink>
                 </li>
-                {/* <li>
-                  <NavLink to="/dashboard/paymentHistory">
-                    <FaCalendar></FaCalendar>
-                    Reservation
-                  </NavLink>
-                </li> */}
+         
                 <li>
                   <NavLink to="/dashboard/post">
                     <FaPodcast></FaPodcast>
@@ -70,12 +61,7 @@ const DashBoard = () => {
                     Add a post
                   </NavLink>
                 </li>
-                {/* <li>
-                  <NavLink to="/dashboard/bookings">
-                    <FaList></FaList>
-                    My Bookings
-                  </NavLink>
-                </li> */}
+             
               </>
             )}
   

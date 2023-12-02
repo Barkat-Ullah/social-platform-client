@@ -8,8 +8,11 @@ import {
   RiUserSearchLine,
 } from "react-icons/ri";
 import MenuDropdown from "../MenuComponents/MenuDropdown";
+import useAnnouncement from "../../../hooks/useAnnouncement";
 
 const Navbar = () => {
+  const [announcements] = useAnnouncement()
+
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -61,7 +64,7 @@ const Navbar = () => {
         >
           <div className="flex items-center ">
             Notify <RiNotification3Line className="ml-1"></RiNotification3Line>{" "}
-            <span className="badge ml-2 mb-2">+99</span>
+            <span className="badge ml-2 mb-2 text-sky-400 font-semibold">+{announcements.length}</span>
           </div>
         </NavLink>
       </li>

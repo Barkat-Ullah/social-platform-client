@@ -5,10 +5,13 @@ import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
     const { createUser } = useAuth()
+    const axiosPublic = useAxiosPublic()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [reError, setReError] = useState("");
@@ -22,8 +25,8 @@ const Register = () => {
     
       const form = new FormData(e.currentTarget);
       const name = form.get("name");
-      // const email = form.get("email");
-      // const password = form.get("password");
+      const capturedEmail = form.get("email");
+      const capturePassword = form.get("password");
       const photo = form.get("photo");
       
       console.log(name, email, password, photo );
@@ -41,16 +44,41 @@ const Register = () => {
       setReError("");
       setSuccess("");
   
-      createUser(email, password)
+      createUser(capturedEmail, capturePassword)
         .then((result) => {
           console.log(result.user);
           setSuccess("Your account was registered!");
-          navigate('/')
+          // navigate('/')
+          
           updateProfile(result.user, {
             displayName:name, photoURL:photo
           })
-          .then(()=>{console.log('update');})
-          .catch()
+          .then(() => {
+            console.log("user profile info updated");
+            const userInfo = {
+              name: name,
+              email: capturedEmail 
+            };
+  
+            axiosPublic.post('/users', userInfo)
+            .then(res => {
+              console.log(res.data);
+              if(res.data.insertedId){
+              
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "User created successfully.",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate ("/");
+              }
+            })
+  
+           
+          })
+          .catch((error) => console.log(error));
         })
   
         .catch((error) => {
