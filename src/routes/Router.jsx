@@ -19,6 +19,7 @@ import AllComments from "../shared/Comments/AllComments";
 import Report from "../layout/AdminDashboard/Report";
 import PrivateRoute from "./PrivateRoute";
 import AdminPrivate from "./AdminPrivate";
+import Contact from "../shared/Contact";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
                 path: "/comments/:postId",
                 element:<AllComments></AllComments>
             },
+            {
+                path:"contact",
+                element:<Contact/>
+            }
         ]
     },
     {

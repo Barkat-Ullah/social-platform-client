@@ -40,7 +40,7 @@ const AdminHome = () => {
                 <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
                   <MdLocalPostOffice className="text-indigo-500 w-12 h-12 mb-3 inline-block"></MdLocalPostOffice>
                   <h2 className="title-font font-medium text-3xl text-gray-900">
-                    {posts.length}
+                    {posts?.length}
                   </h2>
                   <p className="leading-relaxed">Posts</p>
                 </div>

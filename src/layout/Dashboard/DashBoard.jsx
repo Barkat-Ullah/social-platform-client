@@ -79,7 +79,7 @@ const DashBoard = () => {
               </NavLink>
             </li> */}
             <li>
-              <NavLink to="/order/contact">
+              <NavLink to="/contact">
                 <FaVoicemail></FaVoicemail>
                 Contact
               </NavLink>
