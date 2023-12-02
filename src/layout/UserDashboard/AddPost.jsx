@@ -7,18 +7,24 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useUserPost from "../../hooks/useUserPost";
 import usePayments from "../../hooks/usePayments";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 // import usePost from "../../hooks/usePost";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+console.log(image_hosting_key);
+
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+console.log(image_hosting_api);
 
 const AddPost = () => {
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic()
 
   const [payments] = usePayments();
   console.log(payments);
   const paymentEmail = payments.length > 0 ? payments[0].email : null;
   console.log(paymentEmail);
+
 
   const [, refetch, userPosts] = useUserPost();
   // const [posts] = usePost()
@@ -51,11 +57,13 @@ const AddPost = () => {
         .padStart(2, "0")}`;
 
       const imageData = { image: data.image[0] };
-      const res = await axiosSecure.post(image_hosting_api, imageData, {
+      console.log(imageData);
+      const res = await axiosPublic.post(image_hosting_api, imageData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
+      console.log(res.data);
 
       if (res.data.success) {
         const postDetails = {
