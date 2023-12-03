@@ -82,7 +82,8 @@ const router = createBrowserRouter([
             },
             {
                 path:"post",
-                element:<MyPost></MyPost>
+                element:<MyPost></MyPost>,
+                loader: () => fetch('https://online-meet-platform-server.vercel.app/posts')
             },
            
             // admin route
