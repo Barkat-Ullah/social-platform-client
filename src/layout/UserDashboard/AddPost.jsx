@@ -11,10 +11,10 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 // import usePost from "../../hooks/usePost";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING;
-// console.log(image_hosting_key);
+console.log(image_hosting_key);
 
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-// console.log(image_hosting_api);
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+console.log(  "api",image_hosting_api);
 
 const AddPost = () => {
   const axiosSecure = useAxiosSecure();
@@ -187,7 +187,7 @@ const AddPost = () => {
 
             <div className="form-control w-full my-6">
               <input
-                {...register("image", { required: true })}
+                {...register("image")}
                 type="file"
                 className="textarea textarea-info textarea-bordered file-input w-full max-w-xs"
               />

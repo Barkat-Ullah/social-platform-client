@@ -6,24 +6,27 @@ import useReact from "../../hooks/useReact";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 // import useUserPost from "../../hooks/useUserPost";
-import { Link, useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { Link} from "react-router-dom";
+// import { useState } from "react";
 
 const MyPost = () => {
-  const useUserPosts = useLoaderData()
-  console.log(useUserPosts);
-  const [removes, setRemoves] = useState(useUserPosts)
+  // const useUserPosts = useLoaderData()
+  // console.log(useUserPosts);
+  // const [removes, setRemoves] = useState(useUserPosts)
 
   const axiosSecure = useAxiosSecure();
+
   const [posts,refetch] = usePost();
   console.log(posts);
   const { user } = useAuth();
+  console.log(user.email);
   // const [, refetch, userPosts] = useUserPost();
-  const [reacts] = useReact();
 
-  const userPost = useUserPosts?.filter((post) => post?.userEmail === user?.email);
+
+  const userPost = posts?.filter((post) => post?.userEmail === user?.email);
   console.log(userPost.length);
   // const { _id } = userPosts;
+  const [reacts] = useReact();
 
   const handleDeleteUser = (id) => {
     console.log(id);
@@ -40,14 +43,15 @@ const MyPost = () => {
         axiosSecure.delete(`/posts/${id}`).then((res) => {
           console.log(res.data);
           if (res.data.deletedCount > 0) {
+            refetch()
             Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
               icon: "success",
             });
-            const remaining = removes?.filter(remove => remove._id !== id)
-            console.log(remaining);
-            setRemoves(remaining)
+            // const remaining = removes?.filter(remove => remove._id !== id)
+            // console.log(remaining);
+            // setRemoves(remaining)
           }
         });
       }

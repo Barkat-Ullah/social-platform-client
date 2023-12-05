@@ -5,6 +5,7 @@ import useAxiosSecure from "./useAxiosSecure";
 // import useAxiosPublic from "./useAxiosPublic";
 
 const usePost = (search) => {
+  console.log(search);
   // const {user} = useAuth()
   // const axiosPublic = useAxiosPublic()
   const axiosSecure = useAxiosSecure();
@@ -16,7 +17,8 @@ const usePost = (search) => {
   } = useQuery({
     queryKey: ["posts"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/posts?search=${search}`);
+      // const res = await axiosSecure.get(`/posts?search=${search}`);
+      const res = await axiosSecure.get("/posts");
 
       // const res = await axiosPublic.get(`/posts?email=${user?.email}&search=${search}`)
       console.log(res.data);

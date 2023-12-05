@@ -5,8 +5,8 @@ import SinglePost from "./SinglePost";
 import { GrPrevious, GrNext } from "react-icons/gr";
 
 const Posts = () => {
-  //   const [posts] = usePost();
   const [search, setSearch] = useState("");
+
   const [posts] = usePost(search);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
@@ -62,6 +62,8 @@ const Posts = () => {
           </form>
         </div>
       </div>
+
+      {/* {isLoading && <p className="text-center"> Loading...</p>} */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
         {currentPosts.map((post) => (
