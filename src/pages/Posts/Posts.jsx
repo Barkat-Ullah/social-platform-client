@@ -34,7 +34,7 @@ const Posts = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const searchText = e.target.search.value;
-    console.log(searchText);
+    // console.log(searchText);
     setSearch(searchText);
   };
 

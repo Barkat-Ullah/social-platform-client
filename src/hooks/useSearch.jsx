@@ -10,8 +10,8 @@ const useSearch = (search) => {
   // const axiosSecure = useAxiosSecure()
   const axiosPublic = useAxiosPublic();
   useEffect(() => {
-    axiosPublic(`/posts?search=${search}`).then((res) => {
-      console.log(res.data);
+    axiosPublic.get(`/posts?search=${search}`).then((res) => {
+      console.log("search",res.data);
       setSearchPost(res.data);
     });
   }, [search, axiosPublic]);
